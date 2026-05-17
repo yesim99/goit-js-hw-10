@@ -77,6 +77,9 @@ function updateTimer({ days, hours, minutes, seconds }) {
     minutesEl.textContent = addLeadingZero(minutes);
     secondsEl.textContent = addLeadingZero(seconds);
 }
+function addLeadingZero(value) {
+    return String.value.padStart(2, "0");
+}
 
 function convertMs(ms) {
     const second = 1000;
