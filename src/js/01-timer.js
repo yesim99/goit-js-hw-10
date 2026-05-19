@@ -4,19 +4,20 @@ import "flatpickr/dist/flatpickr.min.css";
 
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
+function onClose(selectedDates) {
+    const selectedDate = selectedDates[0];
+    const currentDate = new Date();
 
+    console.log(selectedDate);
+    console.log(currentDate);
+}
 const options = {
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
-    onClose(selectedDates) {
-        const selectedDate = selectedDates[0];
-        const currentDate = new Date();
-    },
+    onClose,
 };
-
-
 
 const startBtn = document.querySelector("[data-start]");
 const dateTimePicker = document.querySelector("#datetime-picker");
@@ -51,7 +52,7 @@ startBtn.addEventListener("click", () => {
     startBtn.disabled = true;
     dateTimePicker.disabled = true;
 
-    const timerId = setInterval(() => {
+    timerId = setInterval(() => {
         const currentTime = new Date();
         const timeLeft = userSelectedDate - currentTime;
 
@@ -79,7 +80,7 @@ function updateTimer({ days, hours, minutes, seconds }) {
     secondsEl.textContent = addLeadingZero(seconds);
 }
 function addLeadingZero(value) {
-    return String.value.padStart(2, "0");
+    return value.toString().padStart(2, "0");
 }
 
 function convertMs(ms) {
