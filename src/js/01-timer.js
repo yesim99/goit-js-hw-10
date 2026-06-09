@@ -4,13 +4,7 @@ import "flatpickr/dist/flatpickr.min.css";
 
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-function onClose(selectedDates) {
-    const selectedDate = selectedDates[0];
-    const currentDate = new Date();
 
-    console.log(selectedDate);
-    console.log(currentDate);
-}
 const options = {
     enableTime: true,
     time_24hr: true,
@@ -29,26 +23,26 @@ const secondsEl = document.querySelector("[data-seconds]");
 let userSelectedDate = null;
 let timerId = null;
 
-startBtn.disabled = true;//kullanılmaz halde
 function onClose(selectedDates) {
     const selectedDate = selectedDates[0];
     const currentDate = new Date();
 
-    if (selectedDate <= currentDate) {
-        startBtn.disabled = true;
+    console.log(selectedDate);
+    console.log(currentDate);
+    startBtn.disabled = true;
 
-        iziToast.error({
-            title: "Error",
-            message: "Please choose a date in the future",
-            position: "topRight",
-        });
+    iziToast.error({
+        title: "Error",
+        message: "Please choose a date in the future",
+        position: "topRight",
+    });
 
-        return;
-    }
-
-    userSelectedDate = selectedDate;
-    startBtn.disabled = false;
+    return;
 }
+
+userSelectedDate = selectedDate;
+startBtn.disabled = false;
+
 
 
 
