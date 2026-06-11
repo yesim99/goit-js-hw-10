@@ -29,19 +29,21 @@ function onClose(selectedDates) {
 
     console.log(selectedDate);
     console.log(currentDate);
-    startBtn.disabled = true;
+    if (selectedDate <= currentDate) {
+        startBtn.disabled = true;
 
-    iziToast.error({
-        title: "Error",
-        message: "Please choose a date in the future",
-        position: "topRight",
-    });
+        iziToast.error({
+            title: "Error",
+            message: "Please choose a date in the future",
+            position: "topRight",
+        });
 
-    return;
+        return;
+    }
+
+    userSelectedDate = selectedDate;
+    startBtn.disabled = false;
 }
-
-userSelectedDate = selectedDate;
-startBtn.disabled = false;
 
 
 
